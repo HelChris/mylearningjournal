@@ -1,1 +1,1 @@
-# mylearningjournal
+# my learning journal project
