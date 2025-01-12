@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="/scripts/main.js" defer></script>
+  <title>Feed | My Learning Journal</title>
+</head>
+
+<body class="min-h-screen bg-gradient-to-b from-teal-400 via-cyan-300 to-sky-300">
+  <!-- Wrapper for the entire layout -->
+  <div class="min-h-screen flex flex-col">
+    <header class="bg-white shadow-sm">
+      <div class="flex justify-between items-center px-4 py-2">
+        <div>
+          <h1 class="font-bold text-xl">Welcome Back, Human</h1>
+          <div class="flex gap-2">
+            <p class="font-light text-sm underline decoration-teal-600">You are currently focusing on: Foundations and
+              Learning journal</p>
+          </div>
+        </div>
+        <!-- Profile section -->
+        <div class="flex items-center gap-2 pt-2">
+          <img src="/images/avatar-small.jpg" alt="Profile picture" class="w-8 h-8 rounded-full">
+          <!-- Dropdown menu -->
+          <div class="relative">
+            <button id="profileDropdown" aria-expanded="false" aria-haspopup="true" class="flex items-center">
+              Username
+              <!-- Dropdown arrow icon -->
+              <svg class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+              </svg>
+            </button>
+            <!-- Dropdown content -->
+            <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg" role="menu">
+              <div class="py-1">
+                <a href="/settings" class="block px-4 py-2">Settings</a>
+                <a href="/theme" class="block px-4 py-2">Change Theme</a>
+                <button class="block w-full text-left px-4 py-2">Logout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Main content area with sidebar -->
+    <!-- wrapper around everything -->
+    <div class="flex flex-1">
+      <!-- Left sidebar navigation -->
+      <aside class="w-64 bg-teal-50 min-h-screen">
+        <nav class="p-4" aria-label="Main Navigation">
+          <!-- Topics Section -->
+          <div class="mb-6">
+            <h2 class="text-sm font-semibold text-teal-600 uppercase tracking-wider mb-2">Topics</h2>
+            <ul class="space-y-1">
+              <li>
+                <a href="/topics/javascript" class="block px-3 py-2 rounded-md hover:bg-teal-400">
+                  JavaScript
+                </a>
+              </li>
+              <li>
+                <a href="/topics/tailwind" class="block px-3 py-2 rounded-md hover:bg-teal-400">
+                  Tailwind CSS
+                </a>
+              </li>
+              <li>
+                <a href="/topics/html" class="block px-3 py-2 rounded-md hover:bg-teal-400">
+                  HTML
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Projects Section -->
+          <div class="mb-6">
+            <h2 class="text-sm font-semibold text-teal-600 uppercase tracking-wider mb-2">Projects</h2>
+            <ul class="space-y-1">
+              <li>
+                <a href="/projects/readersrealm" class="block px-3 py-2 rounded-md hover:bg-teal-400">
+                  ReadersRealm
+                </a>
+              </li>
+              <li>
+                <a href="/projects/abugstale" class="block px-3 py-2 rounded-md hover:bg-teal-400">
+                  aBugsTale
+                </a>
+              </li>
+              <li>
+                <a href="/projects/gamehub" class="block px-3 py-2 rounded-md hover:bg-teal-400">
+                  GameHub
+                </a>
+              </li>
+              <li>
+                <a href="/projects/sciencemuseum" class="block px-3 py-2 rounded-md hover:bg-teal-400">
+                  ScienceMuseum
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Personal Section -->
+          <div class="mb-6">
+            <h2 class="text-sm font-semibold text-teal-600 uppercase tracking-wider mb-2">Personal</h2>
+            <ul class="space-y-1">
+              <li>
+                <a href="/portfolio" class="block px-3 py-2 rounded-md hover:bg-teal-400">
+                  Portfolio
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main content -->
+      <main class="flex-1 p-6">
+        <!-- SEARCH, SORT BY AND CREATE POST SECTION -->
+        <section>
+          <div class="mb-4">
+            <input type="text" placeholder=" Search posts..."
+              class="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-teal-600 focus:border-teal-600">
+          </div>
+          <div class="mb-4 flex justify-between items-center">
+            <div>
+              <label for="sort" class="block text-sm font-medium text-gray-700">Sort by:</label>
+              <select id="sort" name="sort"
+                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-teal-600 focus:border-teal-600 sm:text-sm rounded-md">
+                <option>Newest</option>
+                <option>Oldest</option>
+                <option>Most comments</option>
+              </select>
+            </div>
+            <button id="new-post-button"
+              class="bg-teal-900 text-white py-2 px-4 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-900">Create
+              Post</button>
+          </div>
+        </section>
+        <section>
+          <h2 class="text-3xl font-medium pb-2">Let's document this journey!</h2>
+          <div class="max-w-2xl text-balance backdrop-blur-sm rounded mb-2">
+            <details>
+              <summary class="font-medium italic">LEARNING STRATEGIES FOR LIMITED TIME</summary>
+              <p class="text-center p-2 italic"><b>1. Use Active Recall:</b> Start each session by writing down what you
+                remember from
+                your last session. This
+                reinforces learning and identifies gaps in understanding</p>
+              <p class="text-center p-2 italic"><b>2. Code in Small Chunks:</b> Break your projects into very small
+                pieces that
+                can be
+                completed in 30-45 minute
+                segments. This makes it easier to stop and start when time is limited.</p>
+              <p class="text-center p-2 italic"><b>3. Comment Your Code Thoroughly:</b> Leave detailed comments
+                explaining your
+                thought
+                process. This helps when
+                you return to the code after a break.</p>
+              <p class="text-center p-2 italic"><b>4. Keep a Running Questions List:</b> When you hit something
+                confusing, note
+                it down
+                and continue working.
+                Use your weekend sessions to explore these questions deeply.</p>
+              <p class="text-center p-2 italic"><b>5. Use Your Teaching Background:</b> Apply your experience in
+                breaking down
+                concepts
+                for toddlers to your own
+                learning. Create simple analogies and explanations for complex programming concepts.</p>
+            </details>
+          </div>
+          <div>
+            <div class="w-full bg-teal-100 rounded-full h-3">
+              <div class="bg-teal-600 h-3 rounded-full transition-all duration-500 ease-out" style="width: 05%">
+              </div>
+            </div>
+          </div>
+          <article class="h-40 bg-black text-white m-4 rounded-xl">
+            <h3 class="p-4 font-semibold capitalize">The next step or task in my journey:</h3>
+          </article>
+        </section>
+
+        <!-- MY POSTS SECTION -- HERE ALL THE ENTRY CARDS WILL BE-->
+        <section aria-label="journal entries">
+          <!-- Posts List -->
+          <div id="postsList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Example Post -->
+            <article class="backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow">
+              <div class="flex flex-row content-center">
+                <img src="/images/avatar-small.jpg" alt="Profile Image" class="w-16 h-16 rounded-full">
+                <time datetime="2025-01-05" class="p-2 content-center text-gray-600">January 5th 2025</time>
+              </div>
+              <h2 class="text-xl font-bold">Concept/Topic</h2>
+              <p class="py-1">What I learned today. What I learned today. What I learned today. What I learned
+                today.What I learned today. What I learned today. What I learned today.What I learned today. What I
+                learned today.What I learned today. What I learned today.</p>
+              <div class=" pt-2">
+                <p class="font-medium">Questions I still have:</p>
+                <p class="pl-1 text-pretty">Will I be done with my projects in time?</p>
+              </div>
+              <div class="pt-2">
+                <p class="font-medium">My next steps:</p>
+                <p class="pl-1 text-pretty">Watch the recording on JS2 CA</p>
+              </div>
+              <div class="flex justify-left items-center mt-2">
+                <button class=" px-2 py-1 rounded flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5 text-gray-500 hover:text-teal-500 hover:fill-teal-500 focus:text-teal-500 focus:fill-teal-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                  </svg>
+                </button>
+                <p>1 Like</p>
+              </div>
+              <div class="mt-4">
+                <input type="text" placeholder="Add a comment..." class="w-full p-2 border border-gray-300 rounded">
+              </div>
+            </article>
+            <article class="backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow">
+              <div class="flex flex-row content-center">
+                <img src="/images/avatar-small.jpg" alt="Profile Image" class="w-16 h-16 rounded-full">
+                <time datetime="2025-01-05" class="p-2 content-center text-gray-600">January 5th 2025</time>
+              </div>
+              <h2 class="text-xl font-bold">Concept/Topic</h2>
+              <p class="py-1">What I learned today. What I learned today. What I learned today. What I learned
+                today.What I learned
+                today. What I learned today. What I learned today.What I learned today. What I learned today.What I
+                learned today.
+                What I learned today.</p>
+              <div class=" pt-2">
+                <p class="font-medium">Questions I still have:</p>
+                <p class="pl-1 text-pretty">Will I be done with my projects in time?</p>
+              </div>
+              <div class="pt-2">
+                <p class="font-medium">My next steps:</p>
+                <p class="pl-1 text-pretty">Watch the recording on JS2 CA</p>
+              </div>
+              <div class="flex justify-left items-center mt-2">
+                <button class=" px-2 py-1 rounded flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5 text-gray-500 hover:text-teal-500 hover:fill-teal-500 focus:text-teal-500 focus:fill-teal-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                  </svg>
+                </button>
+                <p>1 Like</p>
+              </div>
+              <div class="mt-4">
+                <input type="text" placeholder="Add a comment..." class="w-full p-2 border border-gray-300 rounded">
+              </div>
+            </article>
+            <article class="backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow">
+              <div class="flex flex-row content-center">
+                <img src="/images/avatar-small.jpg" alt="Profile Image" class="w-16 h-16 rounded-full">
+                <time datetime="2025-01-05" class="p-2 content-center text-gray-600">January 5th 2025</time>
+              </div>
+              <h2 class="text-xl font-bold">Concept/Topic</h2>
+              <p class="py-1">What I learned today. What I learned today. What I learned today. What I learned
+                today.What I learned
+                today. What I learned today. What I learned today.What I learned today. What I learned today.What I
+                learned today.
+                What I learned today.</p>
+              <div class=" pt-2">
+                <p class="font-medium">Questions I still have:</p>
+                <p class="pl-1 text-pretty">Will I be done with my projects in time?</p>
+              </div>
+              <div class="pt-2">
+                <p class="font-medium">My next steps:</p>
+                <p class="pl-1 text-pretty">Watch the recording on JS2 CA</p>
+              </div>
+              <div class="flex justify-left items-center mt-2">
+                <button class=" px-2 py-1 rounded flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5 text-gray-500 hover:text-teal-500 hover:fill-teal-500 focus:text-teal-500 focus:fill-teal-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                  </svg>
+                </button>
+                <p>1 Like</p>
+              </div>
+              <div class="mt-4">
+                <input type="text" placeholder="Add a comment..." class="w-full p-2 border border-gray-300 rounded">
+              </div>
+            </article>
+            <article class="backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow">
+              <div class="flex flex-row content-center">
+                <img src="/images/avatar-small.jpg" alt="Profile Image" class="w-16 h-16 rounded-full">
+                <time datetime="2025-01-05" class="p-2 content-center text-gray-600">January 5th 2025</time>
+              </div>
+              <h2 class="text-xl font-bold">Concept/Topic</h2>
+              <p class="py-1">What I learned today. What I learned today. What I learned today. What I learned
+                today.What I learned
+                today. What I learned today. What I learned today.What I learned today. What I learned today.What I
+                learned today.
+                What I learned today.</p>
+              <div class=" pt-2">
+                <p class="font-medium">Questions I still have:</p>
+                <p class="pl-1 text-pretty">Will I be done with my projects in time?</p>
+              </div>
+              <div class="pt-2">
+                <p class="font-medium">My next steps:</p>
+                <p class="pl-1 text-pretty">Watch the recording on JS2 CA</p>
+              </div>
+              <div class="flex justify-left items-center mt-2">
+                <button class=" px-2 py-1 rounded flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5 text-gray-500 hover:text-teal-500 hover:fill-teal-500 focus:text-teal-500 focus:fill-teal-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                  </svg>
+                </button>
+                <p>1 Like</p>
+              </div>
+              <div class="mt-4">
+                <input type="text" placeholder="Add a comment..." class="w-full p-2 border border-gray-300 rounded">
+              </div>
+            </article>
+            <article class="backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow">
+              <div class="flex flex-row content-center">
+                <img src="/images/avatar-small.jpg" alt="Profile Image" class="w-16 h-16 rounded-full">
+                <time datetime="2025-01-05" class="p-2 content-center text-gray-600">January 5th 2025</time>
+              </div>
+              <h2 class="text-xl font-bold">Concept/Topic</h2>
+              <p class="py-1">What I learned today. What I learned today. What I learned today. What I learned
+                today.What I learned
+                today. What I learned today. What I learned today.What I learned today. What I learned today.What I
+                learned today.
+                What I learned today.</p>
+              <div class=" pt-2">
+                <p class="font-medium">Questions I still have:</p>
+                <p class="pl-1 text-pretty">Will I be done with my projects in time?</p>
+              </div>
+              <div class="pt-2">
+                <p class="font-medium">My next steps:</p>
+                <p class="pl-1 text-pretty">Watch the recording on JS2 CA</p>
+              </div>
+              <div class="flex justify-left items-center mt-2">
+                <button class=" px-2 py-1 rounded flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5 text-gray-500 hover:text-teal-500 hover:fill-teal-500 focus:text-teal-500 focus:fill-teal-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                  </svg>
+                </button>
+                <p>1 Like</p>
+              </div>
+              <div class="mt-4">
+                <input type="text" placeholder="Add a comment..." class="w-full p-2 border border-gray-300 rounded">
+              </div>
+            </article>
+            <article class="backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow">
+              <div class="flex flex-row content-center">
+                <img src="/images/avatar-small.jpg" alt="Profile Image" class="w-16 h-16 rounded-full">
+                <time datetime="2025-01-05" class="p-2 content-center text-gray-600">January 5th 2025</time>
+              </div>
+              <h2 class="text-xl font-bold">Concept/Topic</h2>
+              <p class="py-1">What I learned today. What I learned today. What I learned today. What I learned
+                today.What I learned
+                today. What I learned today. What I learned today.What I learned today. What I learned today.What I
+                learned today.
+                What I learned today.</p>
+              <div class=" pt-2">
+                <p class="font-medium">Questions I still have:</p>
+                <p class="pl-1 text-pretty">Will I be done with my projects in time?</p>
+              </div>
+              <div class="pt-2">
+                <p class="font-medium">My next steps:</p>
+                <p class="pl-1 text-pretty">Watch the recording on JS2 CA</p>
+              </div>
+              <div class="flex justify-left items-center mt-2">
+                <button class=" px-2 py-1 rounded flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5 text-gray-500 hover:text-teal-500 hover:fill-teal-500 focus:text-teal-500 focus:fill-teal-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                  </svg>
+                </button>
+                <p>1 Like</p>
+              </div>
+              <div class="mt-4">
+                <input type="text" placeholder="Add a comment..." class="w-full p-2 border border-gray-300 rounded">
+              </div>
+            </article>
+
+
+          </div>
+        </section>
+
+        <!-- LEARNING JOURNAL FORM-->
+        <section class="max-w-xl mx-auto p-4">
+          <div class="card mb-6">
+            <div class="card-header">
+              <div class="card-title flex items-center gap-2">
+                <svg class="w-6 h-6">
+                  <use href="#book-icon"></use>
+                </svg>
+                JavaScript Learning Journal
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="space-y-4">
+                <div>
+                  <input type="text" id="concept" placeholder="Concept/Topic" class="w-full p-2 border rounded mb-2">
+                </div>
+                <div>
+                  <textarea id="learned" placeholder="What I learned today..."
+                    class="w-full p-2 border rounded mb-2"></textarea>
+                </div>
+                <div>
+                  <textarea id="questions" placeholder="Questions I still have..."
+                    class="w-full p-2 border rounded mb-2"></textarea>
+                </div>
+                <div>
+                  <textarea id="nextSteps" placeholder="Next steps..."
+                    class="w-full p-2 border rounded mb-2"></textarea>
+                </div>
+                <button id="addEntry"
+                  class="bg-teal-900 text-white py-2 px-4 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-900">
+                  Add Entry
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="entries" class="space-y-4"></div>
+
+          <svg style="display: none;">
+            <symbol id="plus-icon" viewBox="0 0 24 24">
+              <path d="M12 5v14m7-7H5" />
+            </symbol>
+            <symbol id="book-icon" viewBox="0 0 24 24">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+              <path d="M4 4h16v16H6.5A2.5 2.5 0 014 17.5V4z" />
+            </symbol>
+            <symbol id="check-circle-icon" viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
+            </symbol>
+            <symbol id="help-circle-icon" viewBox="0 0 24 24">
+              <path d="M9.09 9a3 3 0 015.82 0c0 1.5-1.5 2.5-2.5 3m.01 4h.01" />
+              <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
+            </symbol>
+          </svg>
+        </section>
+      </main>
+    </div>
+  </div>
+  <!-- <footer class="bg-teal-50"> -->
+  <footer class="bg-stone-900">
+    <p class="text-center text-xs text-teal-50 p-1">HelChris  2025</p>
+  </footer>
+</body>
+
+</html>
