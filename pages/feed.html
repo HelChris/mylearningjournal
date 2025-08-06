@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="module" src="/scripts/main.js" defer></script>
+  <script type="module" src="/js/main.mjs" defer></script>
   <title>Feed | My Learning Journal</title>
 </head>
 
@@ -16,13 +16,13 @@
         <div>
           <h1 class="font-bold text-xl">Welcome Back, Human</h1>
           <div class="flex gap-2">
-            <p class="font-light text-sm underline decoration-teal-600">You are currently focusing on: Foundations and
-              Learning journal</p>
+            <p class="font-light text-sm underline decoration-teal-600">You are currently focusing on: Javascript
+              Essentials</p>
           </div>
         </div>
         <!-- Profile section -->
         <div class="flex items-center gap-2 pt-2">
-          <img src="/images/avatar-small.jpg" alt="Profile picture" class="w-8 h-8 rounded-full">
+          <img src="/assets/images/avatar-small.jpg" alt="Profile picture" class="w-8 h-8 rounded-full">
           <!-- Dropdown menu -->
           <div class="relative">
             <button id="profileDropdown" aria-expanded="false" aria-haspopup="true" class="flex items-center">
@@ -79,12 +79,17 @@
             <ul class="space-y-1">
               <li>
                 <a href="/projects/readersrealm" class="block px-3 py-2 rounded-md hover:bg-teal-400">
-                  ReadersRealm
+                  Spirit Bid
+                </a>
+              </li>
+              <li>
+                <a href="/projects/readersrealm" class="block px-3 py-2 rounded-md hover:bg-teal-400">
+                  Readers Realm
                 </a>
               </li>
               <li>
                 <a href="/projects/abugstale" class="block px-3 py-2 rounded-md hover:bg-teal-400">
-                  aBugsTale
+                  A Bugs Tale
                 </a>
               </li>
               <li>
@@ -94,7 +99,7 @@
               </li>
               <li>
                 <a href="/projects/sciencemuseum" class="block px-3 py-2 rounded-md hover:bg-teal-400">
-                  ScienceMuseum
+                  Science Museum
                 </a>
               </li>
             </ul>
@@ -216,7 +221,7 @@
                 <input type="text" placeholder="Add a comment..." class="w-full p-2 border border-gray-300 rounded">
               </div>
             </article>
-            <article class="backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow">
+            <!-- <article class="backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow">
               <div class="flex flex-row content-center">
                 <img src="/images/avatar-small.jpg" alt="Profile Image" class="w-16 h-16 rounded-full">
                 <time datetime="2025-01-05" class="p-2 content-center text-gray-600">January 5th 2025</time>
@@ -385,14 +390,14 @@
               <div class="mt-4">
                 <input type="text" placeholder="Add a comment..." class="w-full p-2 border border-gray-300 rounded">
               </div>
-            </article>
+            </article> -->
 
 
           </div>
         </section>
 
         <!-- LEARNING JOURNAL FORM-->
-        <section class="max-w-xl mx-auto p-4">
+        <section id="create-post" class="max-w-xl mx-auto p-4">
           <div class="card mb-6">
             <div class="card-header">
               <div class="card-title flex items-center gap-2">
@@ -452,7 +457,7 @@
   </div>
   <!-- <footer class="bg-teal-50"> -->
   <footer class="bg-stone-900">
-    <p class="text-center text-xs text-teal-50 p-1">HelChris  2025</p>
+    <p class="text-center text-xs text-teal-50 p-1">HelChris 2025</p>
   </footer>
 </body>
 
