@@ -1,13 +1,6 @@
 import '/css/style.css';
 // import { RegistrationForm } from '/js/components/forms/registrationForm.mjs';
-
-import supabase from '/js/constants/supabaseClient.mjs';
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   new RegistrationForm('registrationForm');
-// });
-
-console.log(supabase);
+import { fetchJournal } from './database/fetchJournalData.mjs';
 
 document
   .getElementById('new-post-button')
@@ -19,3 +12,5 @@ document
       console.warn('Element with ID "create-post" not found');
     }
   });
+
+  fetchJournal();
